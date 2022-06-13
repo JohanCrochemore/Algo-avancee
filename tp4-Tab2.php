@@ -2,7 +2,9 @@
 
 $tableau;
 
-for($i=0; $i<30; $i++ )
+$NB_VALEURS = 30;
+
+for($i=0; $i<$NB_VALEURS; $i++ )
     $tableau[]=rand(20,100);
 
 

@@ -1,12 +1,13 @@
 <?php
 $salaire ;
-
+$SALAIRE_MIN = 1500;
+$SALAIRE_MAX = 3000;
 do
 {
     $salaire  = readline('Saisissez un salaire entre 1500 et 3000 : ');
     $salaire = (intval($salaire));
 }
-while($salaire <= 1500 OR $salaire >= 3000);
+while($salaire < $SALAIRE_MIN OR $salaire > $SALAIRE_MAX);
 
 $jours = 30;
 

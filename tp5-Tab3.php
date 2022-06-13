@@ -1,11 +1,12 @@
 <?php
 
 $tableau;
+$NB_VALEURS = 30;
 
-for($i=0; $i<30; $i++ )
+for($i=0; $i<$NB_VALEURS; $i++ )
     $tableau[]=rand(30,300);
 
-for($i=0; $i<30; $i+=2 )
+for($i=0; $i<$NB_VALEURS; $i+=2 )
 {
     unset($tableau[$i]);
 }
