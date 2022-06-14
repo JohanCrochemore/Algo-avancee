@@ -22,7 +22,7 @@ $projet = saisirNombre();
 
 $dureePret = [5,10,15,20,25];
 $capacite;
-calculerMensualité($mensuel);
+echo "Mensualité : ". calculerMensualité($mensuel). " € \n";
 
 foreach($dureePret as $valeur)
 {
@@ -35,14 +35,18 @@ if($isPretPossible)
 else
     echo "Nous ne pouvons pas vous pretez \n";
 
-function calculerMensualité(float $mensuel)
+$nbMois = calculerTempsPret($mensuel,$projet);
+
+echo "Le temps de prêt minimum pour votre projet est de $nbMois mois soit ". round($nbMois/12) . " ans et ". $nbMois%12 . " mois."; 
+
+function calculerMensualité(float $mensuel) : float
 {
-     echo "Mensualité : " . $mensuel*0.33 ."€ \n";
+     return $mensuel*0.33 ;
 }
 
 function capaciteEmprunt(float $mensuel, int $annee) : float
 {
-    $capacite = $mensuel*0.33*12*$annee;
+    $capacite = calculerMensualité($mensuel)*12*$annee;
     echo "La capacité d'emprunt du client sur $annee ans est de $capacite € \n";
     return $capacite;
 }
@@ -50,6 +54,11 @@ function capaciteEmprunt(float $mensuel, int $annee) : float
 function isPretPossible(float $projet, float $capacite) : bool
 {
     return $projet < $capacite;
+}
+
+function calculerTempsPret(float $mensuel, float $projet) : float
+{
+    return round($projet/(calculerMensualité($mensuel)),0,PHP_ROUND_HALF_UP);
 }
 
 
