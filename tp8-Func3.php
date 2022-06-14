@@ -1,6 +1,5 @@
 <?php
 
-
 function saisirNombre() : float
 {
     $nombre ;
@@ -13,30 +12,36 @@ function saisirNombre() : float
     return $nombre;
 }
 
-function calculerSuperficie(float $nb1, float $nb2) : float
+function calculerSuperficie(array $tab) : float
 {
-    return $nb1*$nb2;
+    $superficie = 0;
+    
+    foreach($tab as $value)
+        $superficie += $value['longueur']*$value['largeur'];
+       
+    return $superficie;
 }
-
 
 $nbPiece;
 
 echo "Indiquez le nombre de pièces : \n";
+
 $nbPiece = saisirNombre();
 
 $tableau;
 
 for($i=0; $i < $nbPiece; $i++)
 {
-    echo "Indiquer la largeur de la piece n° " . $i+1 . " (m): \n";
+    echo "Indiquer la largeur de la piece n° " . $i+1 . " en mètre : \n";
     $largeur = saisirNombre();
-    echo "Indiquer la longueur de la piece n° " . $i+1 . " (m): \n";
+    echo "Indiquer la longueur de la piece n° " . $i+1 . " en mètre : \n";
     $longueur = saisirNombre();
-
-    $tableau[] =  calculerSuperficie($largeur,$longueur);
+    $tableau[$i]['longueur']= $longueur;
+    $tableau[$i]['largeur'] = $largeur;
+    
 }
+print_r($tableau);
 
-echo "La superficie de votre bien immobilier est de " . array_sum($tableau) . "m² \n";
-
+echo "La superficie de votre bien immobilier est de " . calculerSuperficie($tableau) . "m² \n";
 
 ?>

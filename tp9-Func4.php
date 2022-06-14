@@ -31,13 +31,13 @@ foreach($dureePret as $valeur)
 }
 
 if($isPretPossible)
-    echo "Nous pouvons vous pretez \n";
+    echo "Nous pouvons vous preter \n";
 else
-    echo "Nous ne pouvons pas vous pretez \n";
+    echo "Nous ne pouvons pas vous preter \n";
 
 $nbMois = calculerTempsPret($mensuel,$projet);
 
-echo "Le temps de prêt minimum pour votre projet est de $nbMois mois soit ". round($nbMois/12) . " ans et ". $nbMois%12 . " mois."; 
+echo "Le temps de prêt minimum pour votre projet est de $nbMois mois soit ". round($nbMois/12) . " ans et ". $nbMois%12 . " mois. \n"; 
 
 function calculerMensualité(float $mensuel) : float
 {
