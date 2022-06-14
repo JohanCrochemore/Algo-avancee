@@ -16,8 +16,8 @@ function calculerSuperficie(array $tab) : float
 {
     $superficie = 0;
     
-    foreach($tab as $value)
-        $superficie += $value['longueur']*$value['largeur'];
+    foreach($tab as $piece)
+        $superficie += $piece['longueur']*$piece['largeur'];
        
     return $superficie;
 }
@@ -33,15 +33,11 @@ $tableau;
 for($i=0; $i < $nbPiece; $i++)
 {
     echo "Indiquer la largeur de la piece n° " . $i+1 . " en mètre : \n";
-    $largeur = saisirNombre();
+    $tableau[$i]['largeur'] = saisirNombre();
     echo "Indiquer la longueur de la piece n° " . $i+1 . " en mètre : \n";
-    $longueur = saisirNombre();
-    $tableau[$i]['longueur']= $longueur;
-    $tableau[$i]['largeur'] = $largeur;
-    
+    $tableau[$i]['longueur'] = saisirNombre();
 }
-print_r($tableau);
 
-echo "La superficie de votre bien immobilier est de " . calculerSuperficie($tableau) . "m² \n";
+echo "La superficie de votre bien immobilier est de " . calculerSuperficie($tableau) . " m² \n";
 
 ?>
