@@ -1,5 +1,7 @@
 <?php
 
+// fonction pour saisir un nombre 
+
 function saisirNombre() : float
 {
     $nombre ;
@@ -11,6 +13,8 @@ function saisirNombre() : float
     $nombre = floatval($nombre);
     return $nombre;
 }
+
+// fonction qui calcule la superficie
 
 function calculerSuperficie(array $tab) : float
 {
@@ -29,6 +33,8 @@ echo "Indiquez le nombre de pièces : \n";
 $nbPiece = saisirNombre();
 
 $tableau;
+
+// on boucle sur le nombre de pièce en demandant la largeur et longueur de la pièce
 
 for($i=0; $i < $nbPiece; $i++)
 {

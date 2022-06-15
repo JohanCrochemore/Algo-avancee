@@ -2,6 +2,9 @@
 $nombre ;
 $MIN = 5;
 $MAX = 20;
+
+// tant que la valeur rentrée n'est pas un chiffre compris dans la tranche de valeur voulue, on continue de demander une valeur
+
 do
 {
     $nombre  = readline('Saisissez un nombre entre 5 et 20 : ');
@@ -13,6 +16,8 @@ while($nombre < $MIN OR $nombre > $MAX);
 for($i =0; $i<$nombre; $i++)
     sommeTableau(remplirTableau());
 
+// fonction qui rempli un tableau avec des valeurs aléatoires
+
 function remplirTableau() : Array
 {
     $tableau;
@@ -23,6 +28,8 @@ function remplirTableau() : Array
 
     return $tableau;
 }
+
+// fonction qui calcule la somme d'un tableau
 
 function sommeTableau(array $tableau)
 {
