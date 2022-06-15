@@ -2,15 +2,14 @@
 
 $file = fopen('prixetvolume.csv','w+');
 
-$datas[]= json_decode(file_get_contents('https://api2.binance.com/api/v3/ticker/24hr'));
+$datas= json_decode(file_get_contents('https://api2.binance.com/api/v3/ticker/24hr'));
 
 $arrayDatas = [];
 
 // on transforme chaque object stdClass en array
 foreach ($datas as $product)
 {
-    foreach((array)$product as $p)
-        $arrayDatas[] = (array) $p;
+    $arrayDatas[] = (array) $product;
 }
 
 // on effectue le tri du tableau
@@ -25,7 +24,6 @@ for($i = 0; $i<10; $i++)
 {
     $dixpluscher [] = $arrayDatas[$i];
 }
-
 
 $dixpluscher = formaterTableau($dixpluscher);
 
@@ -52,7 +50,7 @@ function formaterTableau(array $tableau) : array
     return $tableau;
 }
 
-// fonction qui tri le tableau en fonction du champ 'highPrice'
+// fonction qui tri le tableau en fonction du champ 'lastPrice'
 function triTableau(int $index, array $tableau) : array
 {
     $tri = FALSE;
@@ -62,7 +60,7 @@ function triTableau(int $index, array $tableau) : array
         for($i = $index ; $i < count($tableau) ; $i++) 
         {
             $tri = TRUE;
-            if(intval($tableau[$index]['highPrice']) < intval($tableau[$i]['highPrice'])) 
+            if(intval($tableau[$index]['lastPrice']) < intval($tableau[$i]['lastPrice'])) 
             {
                 $valeur = $tableau[$i];
                 $tableau[$i]=$tableau[$index];
